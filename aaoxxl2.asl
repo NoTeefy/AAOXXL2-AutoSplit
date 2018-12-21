@@ -32,7 +32,7 @@ startup {
 	Func<int, bool, bool, Tuple<int, bool, bool>> tc = Tuple.Create;
 	vars.tc = tc;
 	
-	/* 
+	/*
 		We need a deep copy function to reset the levelProgression when a runner exits & stops his timer while keeping the game open for a new run
 		while not touching the values/references from the template itself (gotta love native C based languages...)
 	*/
