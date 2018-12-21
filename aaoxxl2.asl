@@ -1,6 +1,6 @@
 /*
 	Astérix & Obélix Auto-Splitter XXL 2 Mission: Las Vegum (Original) (with loadless timer)
-	Version: 0.0.2
+	Version: 0.0.4
 	Author: NoTeefy
 	Compatible Versions: Standalone
 	Some code may be inspired by some referenced scripts and their authors: Avasam, DevilSquirrel, tduva, Darkid
