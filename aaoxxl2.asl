@@ -1,6 +1,6 @@
 /*
 	Astérix & Obélix Auto-Splitter XXL 2 Mission: Las Vegum (Original) (with loadless timer)
-	Version: 0.0.4
+	Version: 0.0.5
 	Author: NoTeefy
 	Compatible Versions: Standalone
 	Some code may be inspired by some referenced scripts and their authors: Avasam, DevilSquirrel, tduva, Darkid
@@ -13,7 +13,7 @@ state("Gamemodule.elb") {
 
 // Loading & func/var declaration
 startup {
-	vars.ver = "0.0.4";
+	vars.ver = "0.0.5";
 	
 	// Log Output switch for DebugView (enables/disables debug messages)
     var DebugEnabled = false;
@@ -95,7 +95,7 @@ startup {
 	);
 	
 	vars.finalBossHitCountST = new SigScanTarget(0,
-		"2C ?? ?? 03 E8 ?? ?? ?? ?? ?? ?? 03" // sig scan for the static pointer holder of finalBoss (with an offset of 0x8)
+		"00 7C ?? ?? 03 38 ?? ?? ?? ?? ??" // sig scan for the static pointer holder of finalBoss (needs an offset of + 0x9)
 	);
 }
 
@@ -277,7 +277,7 @@ split {
 					} else {
 						vars.DebugOutput("sig scan found first pointer at " + ptr.ToString("X"));
 						IntPtr finalBaseAddressPtr = new IntPtr(ptr.ToInt64());
-						IntPtr finalBaseAddressPtr2 = IntPtr.Add(finalBaseAddressPtr, 0x8);
+						IntPtr finalBaseAddressPtr2 = IntPtr.Add(finalBaseAddressPtr, 0x9);
 						vars.DebugOutput("first pointer with the added offset at " + finalBaseAddressPtr2.ToString("X"));
 						var finalFileOffset = finalBaseAddressPtr2.ToInt32() - (int)modules.First().BaseAddress;
 						int[] offsets = new int[] {
